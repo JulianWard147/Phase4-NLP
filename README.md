@@ -1,6 +1,11 @@
 # Phase4-NLP
 
-This repo was created as part of a project for the Flatiron School Data Science course.
+This repo was created as part of a project for the Flatiron School Data Science course. Per the course website, the suggested task is to:
+
+    "Build a model that can rate the sentiment of a Tweet based on its content."
+
+Although we may refine this task as time allows.
+
 
 # The Data
 
