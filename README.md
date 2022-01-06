@@ -31,6 +31,14 @@ Currently, our best model scores at approx 69%.
 
 # Analysis
 
-If the base data we've recieved is representitive of tweets overall (not nessesarily a good assumption), then most tweets express generally positive emotions. 
+If the base data we've recieved is representitive of tweets overall (not nessesarily a good assumption), then most tweets express generally positive emotions. Negative emotions make up a relatively small part of teh data set.
+
+# Recommendation:
 
 If we were to recommend action on the part of the client, we would recommend that they focus on the aggregate proportion of negative tweets to positive tweets, rather than focusing on attempting to flag particular instances. A time series model based on rolling snapshots of twitter would be helpful in this case. Additionally, further resouces could be put into creating a model that automates discovery of the client's product. 
+
+# Navigating this repository
+
+The data for the project has been stored in the datafile. There is a notebook with early EDA and data preprocessing. Important steps were taken from there and used to prepare data for the Modeling Notebook, which includes the iterative model building process. There are several GridSeach models in there which have been commented out, because they take a long time to run, but the best results from each grid have been preserved. 
+
+Finally, the analysis notebook contains the final model, various scoring and analysing techniques, and the creation of visuals for final presentation.
