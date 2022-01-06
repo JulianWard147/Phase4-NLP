@@ -29,7 +29,7 @@ We prepared and tested numerous models, using GridSearch to sort through hyperpa
 
 Currently, our best model scores at approx 69%.
 
-# Analysis
+# Analysis and Results
 
 If the base data we've recieved is representitive of tweets overall (not nessesarily a good assumption), then most tweets express generally positive emotions. Negative emotions make up a relatively small part of the data set. This makes 
 
