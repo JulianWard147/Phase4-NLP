@@ -4,17 +4,19 @@ This repo was created as part of a project for the Flatiron School Data Science 
 
     "Build a model that can rate the sentiment of a Tweet based on its content."
 
+Although we may refine this task as time allows.
+
+For the moment, our plan is to train a model to determine what sort of sentiment the the tweet expresses. Having such a model would allow PR teams to scan for tweets that might relate to their products and react to potencial swings in sentiment, especially around particular updates or events that might prompt changes to overall sentiment towards their products. 
+
 # The Data
 
 The data for this project was provided by data.world, and can be found [here](https://data.world/crowdflower/brands-and-product-emotions).
 
-The data set contains 9093 tweets about tech products that human raters have flagged as either positive, negative, or neutral.
-
-For the moment, our plan is to train a model to determine what sort of sentiment the the tweet expresses. Having such a model would allow PR teams to scan for tweets that might relate to their products and react to potencial swings in sentiment, especially around particular updates or events that might prompt changes to overall sentiment towards their products. 
+The data set contains 9093 tweets about tech products that human raters have flagged as either positive, negative, or neutral. The tweets were largely directed at various products, mostly Apple or Google tech products and apps. They were collected in a fairly narrow timeframe, apparently around the South by Southwest confrence, for some reason. Because these tweets include a lot of commentary about tech products, they make a reasonably good starting place for a generic tech company looking to assess the sentiments displayed for their own products.
 
 # Preprocessing
 
-Preprocessing text is a critical part of any NLP project. A few tweaks have been made to typical text preprocessing to account for the particular nature of this dataset.  Because the dataset we are working on is pulled from tweets, a few adjustments have been made. We are dropping all @'s, as who a person is talking too does not matter to emotional sentiment (a client may wish to whitelist their own handle or the handle of a product rival for later modelling purposes). Additionally, the dataset has several over represented hashtags, particularly SXSW. This is an artifact of data collection and has been hardcoded out of the model at the moment by adding SXSW and varients into the stopwords list. Further manual additions to the stop words may follow.
+Preprocessing text is a critical part of any NLP project. A few tweaks have been made to typical text preprocessing to account for the particular nature of this dataset.  For the most part, we are leaning on the default tokenizing pattern within the sklearn vectorizers. As for specific tweaks, the dataset has several over represented hashtags, particularly SXSW. This is an artifact of the initial data collection. We have hardcoded SXSW into out of the model at the moment by adding SXSW into the stopwords list, along with @mention, which is overrepresented due to its common use on Twitter. Further manual additions to the stop words may follow.
 
 # The Model
 
@@ -22,15 +24,21 @@ Our baseline model expects an accuracy rating of approximately 61%.
 
 We prepared and tested numerous models, using GridSearch to sort through hyperparameter options. Although the RandomForestClassifier scored almost as well as the Multinomial Naive Bayes model, the Multinomial Naive Bayes model worked considerably faster. Given that, we opted for the naive Bayes model for our final model, as that model works better for a client attempting to repeatedly process large batches of tweets. 
 
-Currently, our best model scores at approx 69%.
+Currently, our best model scores at approx 69% accuracy on cross-validation.
 
 # Analysis and Results
 
-If the base data we've recieved is representitive of tweets overall (not nessesarily a good assumption), then most tweets express generally positive orr neutral sentiment. Negative emotions make up a relatively small part of the data set.
+Our model does fairly well, but due to class imbalances in the final dataset it has a hard time with negative sentiment specifically. We can see this in a low F1 score, and the recall. We could push the model thresholds to tag more negative tweets, but this would then require a human to sort through to compensate for the increase in false positives of negative sentiment.
+
+| Neutral     |             | Positive   |             | Negative   |             |
+| ----------- | ----------- |----------- | ----------- |----------- | ----------- |
+| Precision   | .70         | Precision  | .60         | Precision  | .78         |
+| Recall      | .84         | Recall     | .48         | Recall     | .14         |
+| F1-score    | .76         | F1-score   | .53         | F1-score   | .24         |
 
 # Recommendation
 
-If we were to recommend action on the part of the client, we would recommend that they focus on the aggregate proportion of negative tweets to positive tweets, rather than focusing on attempting to flag particular instances. A time series model based on rolling snapshots of twitter would be helpful in this case. Additionally, further resouces could be put into creating a model that automates discovery of the client's product. 
+If we were to recommend action on the part of the client, we would recommend that they focus on the aggregate proportion of negative tweets to positive tweets, rather than focusing on attempting to flag particular instances or negative tweets. A time series model based on rolling snapshots of twitter would be helpful in this case. Additionally, further resouces could be put into creating a model that automates discovery of the client's product, creating a training dataset specific to the client's products, or finding more negative sentiment tweets to aid model training. 
 
 # Navigating this Repository
 
