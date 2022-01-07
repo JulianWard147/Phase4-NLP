@@ -31,10 +31,11 @@ Currently, our best model scores at approx 69% accuracy on cross-validation.
 
 Our model does fairly well, but due to class imbalances in the final dataset it has a hard time with negative sentiment specifically. We can see this in a low F1 score. We could push the model thresholds to tag more negative tweets, but this would then require a human to sort through to compensate for the increase in false positives of negative sentiment.
 
-| Metric      | Score       |
-| ----------- | ----------- |
-| Header      | Title       |
-| Paragraph   | Text        |
+| Neutral     |             | Positive   |             | Negative   |             |
+| ----------- | ----------- |----------- | ----------- |----------- | ----------- |
+| Precision   | .70         | Precision  | .60         | Precision  | .78         |
+| Recall      | .84         | Recall     | .48         | Recall     | .14         |
+| F1-score    | .76         | F1-score   | .53         | F1-score   | .24         |
 
 # Recommendation
 
