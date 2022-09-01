@@ -42,7 +42,7 @@ If we were to recommend action on the part of the client, we would recommend tha
 
 # Navigating this Repository
 
-The data for the project has been stored in the data folder. There is a folderr with notebooks consisting of early EDA, data preprocessing, and model experimentation. Important steps were taken from there and used to prepare data for the main notebook, which includes the iterative model building process. There are several grid search models in the main notebook which have been commented out, because they take a long time to run, but the best results from each grid have been preserved. The main notebook also contains the final model, various scoring and analysing techniques, and the creation of visuals for the presentation to the stakeholders.
+The data for the project has been stored in the data folder. There is a folder with notebooks consisting of early EDA, data preprocessing, and model experimentation. Important steps were taken from there and used to prepare data for the main notebook, which includes the iterative model building process. There are several grid search models in the main notebook which have been commented out, because they take a long time to run, but the best results from each grid have been preserved. The main notebook also contains the final model, various scoring and analysing techniques, and the creation of visuals for the presentation to the stakeholders.
 
 ## For More Information
 Please review our full analysis in our [Jupyter Notebook](./main_notebook.ipynb) or [presentation deck](./presentation.pdf).
